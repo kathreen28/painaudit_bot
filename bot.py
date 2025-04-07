@@ -2,12 +2,18 @@
 import logging
 import asyncio
 import os
+import json
 from datetime import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters import Command
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
+
+google_creds_raw = os.getenv("GOOGLE_CREDENTIALS_JSON")
+if google_creds_raw:
+    with open("credentials.json", "w") as f:
+        json.dump(json.loads(google_creds_raw), f)
 
 # --- Google Sheets setup ---
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
