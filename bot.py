@@ -140,19 +140,14 @@ async def finish(message: types.Message):
         now
     ])
     summary = (
-        f"📋 *Результаты опроса:*
+    f"📋 *Результаты опроса:*\n\n"
+    f"👤 Возраст: {answers.get('age')}\n"
+    f"🏢 Сфера: {answers.get('industry')}\n"
+    f"👥 Штат: {answers.get('staff')}\n"
+    f"💰 Оборот: {answers.get('revenue')}\n"
+    f"⚠️ Проблемные зоны: {pain}"
+)
 
-"
-        f"👤 Возраст: {answers.get('age')}
-"
-        f"🏢 Сфера: {answers.get('industry')}
-"
-        f"👥 Штат: {answers.get('staff')}
-"
-        f"💰 Оборот: {answers.get('revenue')}
-"
-        f"⚠️ Проблемные зоны: {pain}"
-    )
     await message.answer(summary, parse_mode="Markdown", reply_markup=ReplyKeyboardRemove())
     await message.answer(
         "Спасибо! 🙌\n\nТы помог сделать этот доклад точнее и ближе к реальности.",
